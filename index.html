@@ -60,13 +60,15 @@
     <script src="js/app/models/Negociacao.js"></script>
     <script>
         
+        var hoje = new Date();
+        
         var n1 = new Negociacao(new Date(), 5, 700);
-        n1.quantidade = 1000;        
-        n1._quantidade = 5000;
-        console.log(n1.quantidade);
+
         console.log(n1.data);
-        console.log(n1.valor);
-        console.log(n1.volume);
+
+        hoje.setDate(25);
+
+        console.log(n1.data);
 
     </script>
 </body>
