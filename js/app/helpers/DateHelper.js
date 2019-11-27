@@ -8,8 +8,8 @@ class DateHelper {
     static dataParaTexto(data) {
 
         return `${data.getDate()}/${data.getMonth()+1}/${data.getFullYear()}`;
-        
-      }
+
+    }
 
     static textoParaData(texto) {
 
@@ -17,7 +17,7 @@ class DateHelper {
             throw new Error('Deve estar no formato aaaa-mm-dd');
         }
 
-        return new Date(...texto.split('-').map((item,indice) => item - indice % 2));
+        return new Date(...texto.split('-').map((item, indice) => item - indice % 2));
 
     }
 }
