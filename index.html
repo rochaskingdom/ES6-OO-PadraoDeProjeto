@@ -13,7 +13,7 @@
     <h1 class="text-center">Negociações</h1>
 
     <div id="mensagemView"></div>
-    
+
     <form class="form" onsubmit="negociacaoController.adiciona(event)">
 
         <div class="form-group">
@@ -46,7 +46,7 @@
     <br>
 
     <div id="negociacoesView"></div>
-    
+
     </table>
     <script src="js/app/models/Negociacao.js"></script>
     <script src="js/app/controllers/NegociacaoController.js"></script>
@@ -61,7 +61,18 @@
     </script>
 
     <script>
-        let negociacao = new Proxy(new Negociacao(new Date(), 1, 100), {});
+        let negociacao = new Proxy(new Negociacao(new Date(), 1, 100), {
+
+            get: function (target, prop, receiver) {
+
+                console.log(`A propriedade "${prop}" foi interceptada`);
+                return Reflect.get(target, prop, receiver);
+            }
+
+        });
+
+        console.log(negociacao.quantidade);
+        console.log(negociacao.valor);
     </script>
 </body>
 
