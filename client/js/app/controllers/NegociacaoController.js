@@ -38,11 +38,15 @@ class NegociacaoController {
 
                 if(xhr.status == 200) {
 
-                    console.log('obtendo as negociacoes do servidor.');
+                    JSON.parse(xhr.responseText)
+                    .map(objeto => new Negociacao(new Date(objeto.data), objeto.quantidade, objeto.valor))
+                    .forEach(negociacao => this._listaNegociacoes.adiciona(negociacao));
+                    this._mensagem.texto = 'Negociacoes importadas com sucesso.';
 
                 } else {
 
-                    console.log('nao foi possivel obter as negociacoes do servidor.');
+                    console.log(xhr.response);
+                    this._mensagem.texto = 'Nao foi possivel obter as negociacoes da semana.';
                 }
             }
         };
